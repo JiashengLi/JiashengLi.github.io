@@ -1,0 +1,51 @@
+<header class="header noOpaque">
+  <div id="navBox" class="header-nav menu" data-type="index" >
+    <div class="container">
+      <div class="logobox">
+        <h1 class="logo"> <a href="{dede:global.cfg_cmspath/}/" title="{dede:global.cfg_webname/}" ><img class="logoa" src="{dede:global.cfg_cmspath/}/skin/images/logob.png" alt="{dede:global.cfg_webname/}"><img class="logob" src="{dede:global.cfg_cmspath/}/skin/images/logob.png" alt="{dede:global.cfg_webname/}"></a></h1>
+      </div>
+      <div class="sbtn"><i class='fa iconfont'>&#xe627;</i></div>
+      <ul class="navbar">
+        <li {dede:field name=typeid runphp="yes"}(@me=="")? @me=" class='active'":@me="";{/dede:field}><a href="{dede:global.cfg_cmspath/}/">网站首页</a></li>
+        {dede:channelartlist typeid='top' currentstyle='active'}
+        <li class='{dede:field.currentstyle/}'><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a> {dede:field name=typeid runphp="yes"}
+          global $dsql;
+          $sql = "SELECT id From `dede_arctype` WHERE reid='@me' And ishidden<>1 order by sortrank asc limit 0, 100 ";   
+          $row = $dsql->GetOne($sql);      
+          @me=is_array($row)?'<i class="iconfont">&#xe629;</i>':'';
+          {/dede:field}
+          {dede:php}
+          $id = $refObj->Fields['id'];
+          $sql = ("SELECT * FROM dede_arctype where reid ='$id'");
+          $db->SetQuery($sql);
+          $db->Execute();
+          if($db->GetTotalRow()){
+          echo '
+          <ul>
+            ';
+            while($row = $db->GetArray()){
+            $url = str_replace('{cmspath}','',($row[typedir]));
+            echo "
+            <li><a href=".$url.">".($row[typename])."</a></li>
+            ";
+            };
+            echo '
+          </ul>
+          ';
+          };
+          {/dede:php} </li>
+        {/dede:channelartlist}
+      </ul>
+    </div>
+  </div>
+  <div class="searchBox">
+    <div class="search-pup">
+      <form  name="formsearch" class="dropdown search-form" action="{dede:global.cfg_cmsurl/}/plus/search.php">
+        <input type="hidden" name="kwtype" value="0" />
+        <input class="search-input" name="q" type="text" placeholder="请输入关键词……">
+        <button><i class='fa iconfont'>&#xe627;</i></button>
+      </form>
+    </div>
+  </div>
+  <div class="moble"> <a class="moble-bars" id="btn-bars"><i class="fa iconfont">&#xe610;</i></a></div>
+</header>

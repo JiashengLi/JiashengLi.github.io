@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% load static %}
+<style>
+  
+</style>
+<link rel="stylesheet" href="{% static 'css/homepageStyle.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="//unpkg.com/vue/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui@2.15.7/lib/index.js"></script>
+<script src = "{% static 'js/fakeData.js' %}"></script>
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+<title>欢迎来到临景生物科技有限公司</title>
+</head>
+<body>
+  
+      <div id="header-container"><!--页头-->
+        <div id="header-small-container">
+          <div id="logo">
+            <img src="/static/image/translogo.png">
+          </div>
+          <div id="header-bar">
+            <a href="#" class="header-a"><p>CDMO</p></a>
+            <a href="#" class="header-a"><p>XBIO小分子平台</p></a>
+            <a href="#" class="header-a"><p>生物医药平台</p></a>
+            <a href="#" class="header-a"><p>奥景平台</p></a>
+          </div>
+        </div>
+          
+          <div id="company-description"><!--介绍公司背景-->
+            <div id="compmany-main">
+              <span id="text-description">
+                填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。
+                填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。
+                填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。
+                填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。
+                填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。
+                填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。填充字段，填充字段填充字段。
+              </span>
+            </div>
+      </div>
+      
+        <!-- <div id="company-main" style="height:400px;overflow:hidden;">
+            <div id="textarea-company" class="textarea-right">
+                  <el-card :body-style="{ padding: '0px', marginBottom: '1px' }">
+                    <div style="padding: 14px;">
+                      
+                      <div class="bottom card-header">
+                        <span class="time">最后编辑日期：{{ currentDate }}</span>
+                      </div>
+                    </div>
+                  </el-card>
+            </div>
+        </div> -->
+      </div>
+  <div id="whole-container">
+    
+      <div id="homepage-carousel"><!--用于展示的走马灯-->
+          <template>
+            <el-carousel type="card" indicator-position="outside">
+              <el-carousel-item v-for="item in img_list" :key="item">
+                <img :src="item" alt="">
+              </el-carousel-item>
+            </el-carousel>
+          </template>
+      </div>
+
+      
+
+      <div id="feature-outline"><!--展示四大金刚-->
+        <div id="feature-main" style="text-align: center;">
+              我们有四个大家伙
+              <br>比如说<br><br><br><br><br><br><br>1 2 3 4 一字排开！<br><br><br><br><br><br><br>    
+        </div>
+      </div>
+
+      <div id="CDMO-description"><!--介绍CDMO业务-->
+        <el-container id="company-main">
+          <el-main>
+            <div id="textarea-company" class="textarea-left">
+              <el-skeleton :rows="6" animated />
+            </div>
+          </el-main>
+        </el-container>
+      </div>
+
+      <div id="XBIO-description"><!--介绍XBIO小分子平台-->
+        <el-container id="company-main">
+          <el-main>
+            <div id="textarea-company" class="textarea-right">
+              <el-skeleton :rows="6" animated />
+            </div>
+          </el-main>
+        </el-container>
+      </div>
+
+      <div id="it-description"><!--介绍生物医药信息平台-->
+        <el-container id="company-main">
+          <el-main>
+            <div id="textarea-company" class="textarea-left">
+              <el-skeleton :rows="6" animated />
+            </div>
+          </el-main>
+        </el-container>
+      </div>
+
+      <div id="aojing-description"><!--介绍奥景平台-->
+        <el-container id="company-main">
+          <el-main>
+            <div id="textarea-company" class="textarea-right">
+              <el-skeleton :rows="6" animated />
+            </div>
+          </el-main>
+        </el-container>
+      </div>
+
+      <div id="company-news"><!--公司最新新闻-->
+        <el-container id="news-main">
+          <el-main>
+
+          </el-main>
+        </el-container>
+      </div>
+
+      <div id="footer"><!--footer-->
+        <el-container id="footer-main">
+          <el-main>
+
+          </el-main>
+        </el-container>
+      </div>
+
+
+
+
+
+
+
+
+
+  </div>
+<script>
+var vu = new Vue({
+    	el:"#whole-container",
+         data() {
+          return {
+            activeIndex: '1',
+            activeIndex2: '1',
+            loading: false,
+            currentDate: '2021-12-2',
+            img_list:[
+              "/static/image/91977374_p0.png",
+              "/static/image/夏小卷.jpg",
+              "/static/image/93064293_p0.jpg",
+              "/static/image/78625864_p0.jpg",
+            ],
+          }
+      },
+      methods: {
+        handleSelect(key, keyPath) {
+          console.log(key, keyPath);
+        }
+      }
+    });
+
+</script>
+</body>
+</html>

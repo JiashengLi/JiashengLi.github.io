@@ -1,0 +1,2 @@
+INSERT INTO `dede_myppt` VALUES('1','1','2','自定义第一行文字','自定义第二行文字','/uploads/191113/1-19111315134MW.png','#');
+INSERT INTO `dede_myppt` VALUES('2','1','1','自定义第一行文字','自定义第二行文字','/uploads/191113/1-191113151414608.png','#');

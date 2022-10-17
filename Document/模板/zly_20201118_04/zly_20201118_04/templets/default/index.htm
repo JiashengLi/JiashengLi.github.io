@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<link rel="stylesheet" rev="stylesheet" href="{dede:global.cfg_cmspath/}/skin/css/style.css" type="text/css" media="all"/>
+<script src="{dede:global.cfg_cmspath/}/skin/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+</head>
+<body id="umBody">
+<div class="preloader"></div>
+<!--[if lte IE 8]><div id="browse">您正在使用的浏览器版本过低，请<a href="http://browsehappy.com/" target="_blank"><strong>升级您的浏览器</strong></a>，获得最佳的浏览体验！</div><![endif]-->
+<header class="header opaque">
+  <div id="navBox" class="header-nav menu" data-type="index" >
+    <div class="container">
+      <div class="logobox">
+        <h1 class="logo"> <a href="{dede:global.cfg_cmspath/}/" title="{dede:global.cfg_webname/}" ><img class="logoa" src="{dede:global.cfg_cmspath/}/skin/images/logob.png" alt="{dede:global.cfg_webname/}"><img class="logob" src="{dede:global.cfg_cmspath/}/skin/images/logob.png" alt="{dede:global.cfg_webname/}"></a></h1>
+      </div>
+      <div class="sbtn"><i class='fa iconfont'>&#xe627;</i></div>
+      <ul class="navbar">
+        <li {dede:field name=typeid runphp="yes"}(@me=="")? @me=" class='active'":@me="";{/dede:field}><a href="{dede:global.cfg_cmspath/}/">网站首页</a></li>
+        {dede:channelartlist typeid='top' currentstyle='active'}
+        <li class='{dede:field.currentstyle/}'><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a> {dede:field name=typeid runphp="yes"}
+          global $dsql;
+          $sql = "SELECT id From `dede_arctype` WHERE reid='@me' And ishidden<>1 order by sortrank asc limit 0, 100 ";   
+          $row = $dsql->GetOne($sql);      
+          @me=is_array($row)?'<i class="iconfont">&#xe629;</i>':'';
+          {/dede:field}
+          {dede:php}
+          $id = $refObj->Fields['id'];
+          $sql = ("SELECT * FROM dede_arctype where reid ='$id'");
+          $db->SetQuery($sql);
+          $db->Execute();
+          if($db->GetTotalRow()){
+          echo '
+          <ul>
+            ';
+            while($row = $db->GetArray()){
+            $url = str_replace('{cmspath}','',($row[typedir]));
+            echo "
+            <li><a href=".$url.">".($row[typename])."</a></li>
+            ";
+            };
+            echo '
+          </ul>
+          ';
+          };
+          {/dede:php} </li>
+        {/dede:channelartlist}
+      </ul>
+    </div>
+  </div>
+  <div class="searchBox">
+    <div class="search-pup">
+      <form  name="formsearch" class="dropdown search-form" action="{dede:global.cfg_cmsurl/}/plus/search.php">
+        <input type="hidden" name="kwtype" value="0" />
+        <input class="search-input" name="q" type="text" placeholder="请输入关键词……">
+        <button><i class='fa iconfont'>&#xe627;</i></button>
+      </form>
+      
+    </div>
+  </div>
+  <div class="moble"> <a class="moble-bars" id="btn-bars"><i class="fa iconfont">&#xe610;</i></a></div>
+  <div class="sliderbox">
+    <div id="owl0" class="owl-carousel owl-theme"> {dede:myppt typeid='1'}
+      <div class="item"><a href="[field:url/]" title="[field:title/]"><img src="[field:pic/]" alt="[field:title/]"/></a>
+        <div class="text"><a class="bnLink" href="[field:url/]"></a>
+          <h4 class="anim fadeInUp">[field:title/]</h4>
+          <p class="anim fadeInUp">[field:introduce/]</p>
+          <a href="[field:url/]"><span  class="anim fadeInUp"><em>查看更多</em></span></a></div>
+      </div>
+      {/dede:myppt} </div>
+  </div>
+</header>
+<div class="container Wauto">
+  <div class="main w1200">
+    <div class="article w1"> 
+      <!--服务/优势-->
+      <div class="PostBox advBg">
+        <article class="post">
+          <div class="postTitle anim fadeInUp">
+            <h3>我们的服务</h3>
+            <span class="title1">Our Service</span> <span class="title2">提供专业的设计，制作，售后服务集中解决方案</span> </div>
+          <div class="PostBox">
+            <div class="owl-carousel owl1 anim fadeInUp">
+              <div class="item advIcon">
+                <div class="imgBox"> <img class="owl-lazy" data-src="{dede:global.cfg_cmspath/}/skin/images/fw1.png"></div>
+                <div class="imgText">
+                  <h4>专注品质</h4>
+                  <p>5年前端经验，3000+ 成功案例，10万+ 页面积累</p>
+                </div>
+              </div>
+              <div class="item advIcon">
+                <div class="imgBox"> <img class="owl-lazy" data-src="{dede:global.cfg_cmspath/}/skin/images/fw2.png"></div>
+                <div class="imgText">
+                  <h4>用心服务</h4>
+                  <p>专业的商务服务团队，提供更全面、更强大的实时服务支持</p>
+                </div>
+              </div>
+              <div class="item advIcon">
+                <div class="imgBox"> <img class="owl-lazy" data-src="{dede:global.cfg_cmspath/}/skin/images/fw3.png" ></div>
+                <div class="imgText">
+                  <h4>精益求精</h4>
+                  <p>披星戴月，传承工匠精神，用敬业的态度对待每一个作品</p>
+                </div>
+              </div>
+              <div class="item advIcon">
+                <div class="imgBox"> <img class="owl-lazy" data-src="{dede:global.cfg_cmspath/}/skin/images/fw4.png"></div>
+                <div class="imgText">
+                  <h4>售后保障</h4>
+                  <p>完善的售后服务确保及时、高效，时刻为您的站点保驾护航</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <!--产品中心--> 
+      {dede:channelartlist typeid='2,2'}
+      <div class="PostBox serviceBg">
+        <article class="post">
+          <div class="postTitle anim fadeInUp">
+            <h3>{dede:field name='typename'/}</h3>
+            <span class="title1">{dede:field name='typenameen'/}</span> </div>
+          <div class="PostShow">
+            <div id="owl1" class="owl-carousel"> {dede:arclist titlelen='50' orderby='pubdate'}
+              <div class="item">
+                <div class="post-img loading"><a class="pic float-left" href="[field:arcurl/]" title="[field:title/]"> <img src="[field:picname/]" alt="[field:title/]"/> </a> </div>
+                <h4><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a></h4>
+                <i class="h2"> [field:description function="cn_substr(@me,80)"/]...</i> </div>
+              {/dede:arclist} </div>
+          </div>
+          <div class="more anim fadeInUp"><a href="{dede:field name='typeurl'/}"><span>查看更多 + </span></a></div>
+        </article>
+      </div>
+      {/dede:channelartlist}
+      {dede:channelartlist typeid='10,10'}
+      <div class="PostBox caseBg">
+        <article class="post">
+          <div class="postTitle anim fadeInUp">
+            <h3>{dede:field name='typename'/}</h3>
+            <span class="title1">{dede:field name='typenameen'/}</span> </div>
+          <div class="PostMix">
+            <div class="cateTab anim fadeInUp"> {dede:channel type='son'} <span class="button"><a href="[field:typeurl/]">[field:typename/]</a></span>{/dede:channel} </div>
+            <ul class="cateConlist">
+              {dede:arclist row='8' titlelen='50' orderby='pubdate'}
+              <li class="mix anim fadeInUp" >
+                <div class="post-img loading"><a class="pic float-left" href="[field:arcurl/]" title="[field:title/]">
+                  <div class="post-text">
+                    <h4>[field:title/]</h4>
+                    <i> {dede:field name='position'/}</i></div>
+                  <div class="msk"></div>
+                  <img class="b-lazy" src="[field:global.cfg_cmspath/]/skin/images/lay.gif" data-src="[field:picname/]" alt="[field:title/]"/> </a></div>
+              </li>
+              {/dede:arclist}
+            </ul>
+          </div>
+          <div class="more anim fadeInUp"><a href="{dede:field name='typeurl'/}"><span>查看更多 + </span></a></div>
+        </article>
+      </div>
+      {/dede:channelartlist}
+      {dede:channelartlist typeid='1,1'}
+      <div class="PostBox about aboutBg">
+        <article class="post">
+          <div class="postAbout">
+            <div class="postLeft anim fadeInLeft">
+              <ul class="PostSl">
+                <li>
+                  <p class="slNumber"><span><i class="timer count" data-to="182">0</i><em>+</em></span></p>
+                  <p class="slTitle">涉猎领域</p>
+                </li>
+                <li>
+                  <p class="slNumber"><span><i class="timer count" data-to="1268">0</i><em>+</em></span></p>
+                  <p class="slTitle">服务网站</p>
+                </li>
+                <li>
+                  <p class="slNumber"><span><i class="timer count" data-to="12">0</i><em>年</em></span></p>
+                  <p class="slTitle">WEB服务</p>
+                </li>
+                <li>
+                  <p class="slNumber"><span><i class="timer count" data-to="300">0</i><em>+</em></span></p>
+                  <p class="slTitle">覆盖城市</p>
+                </li>
+              </ul>
+              <div class="mask"></div>
+            </div>
+            <div class="postRight anim fadeInUp">
+              <div class="postTitle anim fadeInUp">
+                <h3>{dede:field name='typename'/}</h3>
+                <span class="title1">{dede:field name='typenameen'/}</span> </div>
+              <div class="PostText anim fadeInUp">{dede:sql sql='Select content from dede_arctype where id=1'}
+                [field:content function='cn_substr(html2text(@me),550)'/]...
+                {/dede:sql}</div>
+              <div class="more anim fadeInUp"><a href="{dede:field name='typeurl'/}"><span>查看详情 + </span></a></div>
+            </div>
+          </div>
+        </article>
+      </div>
+      {/dede:channelartlist}
+      <div class="PostBox process">
+        <div class="container">
+          <article class="post">
+            <div class="postTitle anim fadeInUp">
+              <h3><i class="tLeft"></i>合作流程<i class="tRight"></i></h3>
+              <span class="title1">Cooperation process</span> <span class="title2">服务让我们吸引您，质量让我们留住您</span> </div>
+            <div class="PostBox">
+              <ul class="usList">
+                <div class="owl-carousel owl4 anim fadeInUp">
+                  <li class="item"><i class="listId">01<em class="iBg"></em></i>
+                    <h5>联系优美</h5>
+                  </li>
+                  <li class="item"><i class="listId">02<em class="iBg"></em></i>
+                    <h5>了解需求</h5>
+                  </li>
+                  <li class="item"><i class="listId">03<em class="iBg"></em></i>
+                    <h5>达成协议</h5>
+                  </li>
+                  <li class="item"><i class="listId">04<em class="iBg"></em></i>
+                    <h5>支付定金</h5>
+                  </li>
+                  <li class="item"><i class="listId">05<em class="iBg"></em></i>
+                    <h5>设计开发</h5>
+                  </li>
+                  <li class="item"><i class="listId">06<em class="iBg"></em></i>
+                    <h5>部署测试</h5>
+                  </li>
+                  <li class="item"><i class="listId">07<em class="iBg"></em></i>
+                    <h5>支付余款</h5>
+                  </li>
+                  <li class="item"><i class="listId">08<em class="iBg"></em></i>
+                    <h5>售后服务</h5>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+      {dede:channelartlist typeid='7,7'}
+      <div class="PostBox newsBg">
+        <article class="post news n1">
+          <div class="postTitle anim fadeInUp">
+            <h3>{dede:field name='typename'/}</h3>
+          </div>
+          <div class="PostNews">
+            <ul>
+              <div class="owl-carousel owl3 anim fadeInUp"> {dede:arclist titlelen='50' orderby='pubdate'}
+                <div class="item">
+                  <div class="imgBox loading"><a class="pic float-left" href="[field:arcurl/]" title="[field:title/]"><img class="owl-lazy" data-src="[field:picname/]" alt="[field:title/]"/> </a></div>
+                  <div class="imgText">
+                    <h4><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a></h4>
+                    <p> [field:description function="cn_substr(@me,120)"/]</p>
+                    <p class="time"> [field:pubdate function="MyDate('Y-m-d',@me)"/] </p>
+                    <i class="iconfont"><a href="[field:arcurl/]" title="[field:title/]">&#xe727;</a></i> </div>
+                </div>
+                {/dede:arclist} </div>
+            </ul>
+          </div>
+          <div class="more anim fadeInUp"><a href="{dede:field name='typeurl'/}"><span>查看更多 + </span></a></div>
+        </article>
+      </div>
+      {/dede:channelartlist}
+      <div class="PostBox hbBg">
+        <div class="container">
+          <article class="post">
+            <div class="postTitle anim fadeInUp">
+              <h3><i class="tLeft"></i>合作伙伴<i class="tRight"></i></h3>
+              <span class="title1">partners</span> <span class="title2">这是合作伙伴副标题</span> </div>
+            <div class="PostBox">
+              <div class="hbList owl-carousel owl5 anim fadeInUp">
+                <div class="flip-container item">
+                  <div class="flipper">
+                    <div class="front"><img alt="img" src="{dede:global.cfg_cmspath/}/skin/images/hzhb01.png"></div>
+                    <div class="back"><img alt="img" src="{dede:global.cfg_cmspath/}/skin/images/hzhb01.png"></div>
+                  </div>
+                </div>
+                <div class="flip-container item">
+                  <div class="flipper">
+                    <div class="front"><img alt="img" src="{dede:global.cfg_cmspath/}/skin/images/hzhb02.png"></div>
+                    <div class="back"><img alt="img" src="{dede:global.cfg_cmspath/}/skin/images/hzhb02.png"></div>
+                  </div>
+                </div>
+                <div class="flip-container item">
+                  <div class="flipper">
+                    <div class="front"><img alt="img" src="{dede:global.cfg_cmspath/}/skin/images/hzhb03.png"></div>
+                    <div class="back"><img alt="img" src="{dede:global.cfg_cmspath/}/skin/images/hzhb03.png"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="PostBox contactBg">
+        <div class="post">
+          <div class="contBox anim fadeInUp">
+            <div class="mapBtn"><i class="iconfont">&#xe65a;</i><i class="iconfont close">&#xe605;</i></div>
+            <div class="contText">
+              <div class="postTitle">
+                <h3>联系我们</h3>
+                <span class="title1">Contact us</span> </div>
+              <div class="boxText">
+                <p class="map_y tel"><span>{dede:global.cfg_phone/}</span></p>
+                <p><span class="add">地址：{dede:global.cfg_add/}</span></p>
+                <p><span>手机：{dede:global.cfg_phone/}</span></p>
+                <p><span>电话：{dede:global.cfg_tel/}</span></p>
+                <p><span>传真：{dede:global.cfg_fax/}</span></p>
+                <p class="map_y"><span>QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin={dede:global.cfg_qq/}&site=qq&menu=yes" target="_blank">{dede:global.cfg_qq/}</a></span></p>
+                <div class="map_y social anim fadeInUp"> <a class="socialLink s-weixin" href="javascript:void(0)"><i class="iconfont">&#xe715;</i></a> <a href="mailto:{dede:global.cfg_email/}" target="_blank" class="socialLink s-email" rel="nofollow"><i class="iconfont">&#xe632;</i></a> <a href="{dede:global.cfg_qqweibo/}" target="_blank" class="socialLink s-tencent" rel="nofollow" title="腾讯微博"><i class="iconfont">&#xe606;</i></a> <a href="{dede:global.cfg_weibo/}" target="_blank" class="socialLink s-weibo" rel="nofollow" title="新浪微博"><i class="iconfont">&#xe67a;</i></a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="ummap"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+{dede:include filename="footer.htm"/} 
+<script>
+var containerEl = document.querySelector('.cateConlist');
+var mixer = mixitup(containerEl);
+</script> 
+<script type="text/javascript" src="{dede:global.cfg_cmspath/}/skin/js/map.js"></script> 
+<script type="text/javascript">
+$(function(){
+						var dataX='{dede:global.cfg_jingdu/}';
+		var dataY='{dede:global.cfg_weidu/}';
+		var dataN = '<ul>' + $('.contText .boxText').html() + '</ul>';
+		// 百度地图API功能
+		var map = new BMap.Map("ummap");
+		var point = new BMap.Point(dataX,dataY);
+		var marker = new BMap.Marker(point); 
+		map.addOverlay(marker); 
+		map.centerAndZoom(point, 15);
+		
+		var opts = {
+			width : 200,
+			title : '' ,
+			enableMessage:true
+		}
+		var infoWindow = new BMap.InfoWindow(dataN, opts);  // 创建信息窗口对象 
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+		marker.addEventListener("click", function(){   
+			map.openInfoWindow(infoWindow,point); //开启信息窗口
+		});
+
+
+});
+</script>
+</body>
+</html>

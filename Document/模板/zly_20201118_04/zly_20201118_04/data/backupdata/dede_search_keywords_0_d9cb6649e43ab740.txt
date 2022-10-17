@@ -1,0 +1,2 @@
+INSERT INTO `dede_search_keywords` VALUES('1','奥术大师大所','奥术大师大所 奥术 师大','1','0','1573628898','0','0');
+INSERT INTO `dede_search_keywords` VALUES('2','dame','dame','2','1','1573636184','0','0');

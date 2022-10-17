@@ -1,0 +1,152 @@
+html{
+    height:100%;
+}
+body{
+    height:100%;
+    margin:0 auto;
+}
+#whole-container{
+    height:100%;
+    width:100%
+}
+img{
+    max-width: 100%;
+}
+image{
+    max-width: 100%;
+    max-height: 100%;
+} 
+a:link{
+    text-decoration: none;
+}
+/* .el-carousel__item h3 {
+    color: #000000;
+    font-size: 18px;
+    opacity: 0.75;
+    line-height: 300px;
+    margin: 0;
+    margin: 1%;
+} */
+.el-carousel__container{
+    min-height: 400px !important;
+    max-height: 600px !important;
+}
+.el-carousel__item:nth-child(2n) {
+    background-color: #297ff7;
+    margin: 1%;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+    background-color: #68ffc5;
+    margin: 1%;
+
+}
+#homepage-carousel{
+    background-color: whitesmoke;
+}
+#company-main {
+    background-color: #E9EEF3;
+    color: #333;
+    width:100%;
+    min-height: 20em;
+    background-image: url("/static/image/68232084_p0.png");;
+    background-size: cover;
+    margin: 1% 0 1% 0;
+ }
+ #feature-main{
+     background-image: url("/static/image/93064293_p0.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+  #textarea-company{
+      width:40%;
+      
+      margin: 2%;
+      padding:2%;
+      /* background-color: grey;
+      opacity: 0.6; */
+  }
+body > .el-container {
+margin-bottom: 40px;
+}
+.textarea-right{
+text-align: right;
+float: right;
+}
+.textarea-left{
+    text-align: left;
+    float: left;
+}
+#header-container{
+    height:31rem;
+    min-height: 31rem;
+    opacity: 0.8;
+    display: block;
+    margin: 0 auto;
+    margin-top: 0%;
+} 
+#logo{
+    overflow: hidden;
+    height:6rem;
+    margin: 0.3rem 3% 0.3rem 3%;
+    float: left;
+    display: block;
+    position: absolute;
+    opacity: 1.0 !important;
+}
+
+#logo img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    opacity: 1.0 !important;
+}
+#header-bar{
+    z-index: 999;
+}
+.header-a{
+    height: 5em;
+    width:10%;
+    border:1px solid black;
+    margin: 0.5rem  3% 0 3%;
+    float: right;
+    display: block;
+    font-weight: 100;
+    font-size: large;
+    text-align: center;
+   
+}
+.header-a p{
+    margin-top:1.7rem;
+    color:white;
+    text-decoration: none;
+    
+}
+.header-a:hover{
+    border: 1px solid whitesmoke;
+    transition: 0.4s;
+    border-radius: 8px;
+}
+#company-description{
+    background-image: url("/static/image/93064293_p0.jpg");
+    position: absolute;
+    margin-top: 0%;
+    height:30rem;
+    z-index: -1;
+}
+#header-small-container{
+    width:100%;
+    background-color: black;
+    opacity: 0.8;
+    position: absolute;
+    margin-top: 0%;
+    height: 7rem;
+}
+#text-description{
+    float:right;
+    background-color: whitesmoke;
+    padding:5%;
+    margin-top: 8rem;
+    color:black;
+    max-width:50%;
+}
